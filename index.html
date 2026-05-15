@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Enuk Nogueira | Nave Estelar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --bg-primary: #000a14;
+            --bg-secondary: #000204;
+            --text-primary: #00ff88;
+            --text-secondary: #00cc6f;
+            --accent-cyan: #00ffff;
+            --accent-purple: #ff00ff;
+            --accent-green: #00ff88;
+            --accent-blue: #0080ff;
+            --neon-pink: #ff006e;
+            --card-bg: #0a1628;
+            --border-color: #00ff88;
+            --border-light: #00cc6f;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            background: radial-gradient(ellipse at 50% 0%, #0a2540 0%, var(--bg-secondary) 50%, #000000 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Fundo de stars animadas */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(255,255,255,.2)),
+                radial-gradient(2px 2px at 60px 70px, #fff, rgba(255,255,255,.3)),
+                radial-gradient(1px 1px at 50px 50px, #ddd, rgba(255,255,255,.2)),
+                radial-gradient(1px 1px at 130px 80px, #fff, rgba(255,255,255,.2)),
+                radial-gradient(2px 2px at 90px 10px, #eee, rgba(255,255,255,.2));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+        }
+        
+        /* Grid holográfico */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 255, 136, 0.02) 25%, rgba(0, 255, 136, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 255, 136, 0.02) 75%, rgba(0, 255, 136, 0.02) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 136, 0.02) 25%, rgba(0, 255, 136, 0.02) 26%, transparent 27%, transparent 74%, rgba(0, 255, 136, 0.02) 75%, rgba(0, 255, 136, 0.02) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: url('space-bg.svg') center/cover no-repeat fixed;
+            background-size: cover;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            position: relative;
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        /* Nave ASCII */
+        .ascii-ship {
+            display: none;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-cyan);
+            margin-bottom: 5px;
+            font-size: 3.5em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 136, 0.3);
+        }
+        
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-green);
+            font-weight: 700;
+            margin-top: 10px;
+            font-size: 1.3em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+        
+        .tagline {
+            color: var(--accent-purple);
+            font-size: 0.9em;
+            margin-top: 15px;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .links-utils {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .links-utils a {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 255, 0.05));
+            border: 2px solid var(--border-color);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 136, 0), 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+        
+        .links-utils a svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+        
+        .links-utils a:hover svg {
+            opacity: 1;
+        }
+        
+        .links-utils a:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.2), 0 0 20px rgba(0, 255, 255, 0.4);
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-cyan);
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        h2::before {
+            content: '⬢ ';
+            color: var(--accent-purple);
+            margin-right: 8px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan), var(--accent-purple));
+            animation: scan-line 2s ease-in-out infinite;
+        }
+        
+        @keyframes scan-line {
+            0% { width: 0; }
+            50% { width: 100%; }
+            100% { width: 0; }
+        }
+        
+        section p {
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8), rgba(10, 15, 30, 0.8));
+            border: 2px solid var(--border-light);
+            border-radius: 2px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 255, 136, 0), 0 0 15px rgba(0, 255, 136, 0.1);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 255, 0.1), transparent 80%);
+            pointer-events: none;
+        }
+        
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.1), 0 0 25px rgba(0, 255, 136, 0.3);
+        }
+        
+        .project-card:hover::before {
+            left: 100%;
+        }
+        
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .project-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+        
+        .project-link {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .project-link:hover {
+            color: var(--accent-cyan);
+            transform: translateX(4px);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .tags {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tag {
+            font-family: 'Space Mono', monospace;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 255, 255, 0.05));
+            color: var(--accent-green);
+            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 0;
+            border: 1px solid var(--border-light);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tag:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 255, 255, 0.15));
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        .loading {
+            text-align: center;
+            color: var(--accent-cyan);
+            padding: 60px 20px;
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(0, 255, 136, 0.3);
+            border-top: 3px solid var(--accent-cyan);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1.5s linear infinite;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(255, 0, 110, 0.05));
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 18px;
+            border-radius: 2px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(255, 0, 110, 0.2);
+        }
+        
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .certificate-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8), rgba(10, 15, 30, 0.8));
+            border: 2px solid var(--accent-green);
+            border-radius: 2px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-green);
+            box-shadow: inset 0 0 15px rgba(0, 255, 136, 0), 0 0 10px rgba(0, 255, 136, 0.15);
+        }
+        
+        .certificate-card:hover {
+            border-color: var(--accent-cyan);
+            border-left: 4px solid var(--accent-cyan);
+            box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.1), 0 0 20px rgba(0, 255, 136, 0.3);
+            transform: translateY(-3px) scale(1.02);
+        }
+        
+        .certificate-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .certificate-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .certificate-issuer {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .contact-link {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-cyan) 100%);
+            color: var(--bg-primary);
+            border: 2px solid var(--accent-green);
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            cursor: pointer;
+        }
+        
+        .contact-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        .curriculum-section {
+            text-align: center;
+        }
+        
+        .curriculum-link {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-cyan) 100%);
+            color: var(--bg-primary);
+            border: 2px solid var(--accent-green);
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            cursor: pointer;
+        }
+        
+        .curriculum-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .projects-grid,
+            .certificate-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="space-background"></div>
+<div class="content-wrapper">
+    <div class="container">
+        <header>
+            <div class="ascii-ship">
+      ___∧_∧_
+     < (´・ω・`) NAVE ESTELAR
+      ⌒`⌒´⌒´⌒
+            </div>
+            
+            <h1>ENUK</h1>
+            <h1 style="margin-top: -20px; color: var(--accent-green);">NOGUEIRA</h1>
+            
+            <p class="subtitle">⬥ Engenharia de Dados | Python & SQL ⬥</p>
+            <p class="subtitle">⬥ Inteligência Artificial & Automação ⬥</p>
+            <p class="tagline">"A criatividade é a ferramenta que resolve o impossível"</p>
+            
+            <div class="links-utils">
+                <a href="https://github.com/EnukNogueira" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5a3.5 3.5 0 0 0 -1.025 -2.44c3.025 -.35 6.025 -1.48 6.025 -6.5a5.5 5.5 0 0 0 -1.025 -3.55a5.5 5.5 0 0 0 -.1 -3.55s-1.025 -.35 -3.476 1.025a5.408 5.408 0 0 0 -6.098 0c-2.45 -1.375 -3.476 -1.025 -3.476 -1.025a5.5 5.5 0 0 0 -.1 3.55a5.5 5.5 0 0 0 -1.025 3.55c0 5.02 3 6.15 6.025 6.5a3.5 3.5 0 0 0 -1.025 2.44v3.5"></path>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/enuknogueira/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.469v6.766z"></path>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+        </header>
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Profissional com experiência na área elétrica industrial e em ambientes operacionais de alta responsabilidade, atualmente em transição para as áreas de Engenharia de Dados e Inteligência Artificial.</p>
+            
+            <p>Ao longo da minha trajetória profissional, desenvolvi forte capacidade de resolução de problemas, pensamento lógico, adaptação rápida e atuação sob pressão, sempre com foco em segurança, eficiência e aprendizado contínuo.</p>
+            
+            <p>Hoje venho estudando diariamente tecnologias como Python, Java, bancos de dados, Cloud Computing, Data Analytics e fundamentos de IA, além de desenvolver projetos práticos para fortalecer meu conhecimento e construir meu portfólio.</p>
+            
+            <p>Tenho grande interesse em tecnologia, dados, automação e soluções inteligentes aplicadas a problemas reais. Busco oportunidades para crescer profissionalmente na área tech e unir minha experiência prática do setor industrial com inovação, automação e Inteligência Artificial.</p>
+        </section>
+
+        <section id="tecnologias">
+            <h2>Stack Técnica</h2>
+            <p>
+                <strong>⬢ Linguagens:</strong> Python • Java<br>
+                <strong>⬢ Especialização:</strong> Engenharia de Dados • Análise de Dados • Automação<br>
+                <strong>⬢ Ferramentas:</strong> Git • GitHub • Docker • APIs • Banco de Dados Relacionais<br>
+                <strong>⬢ Paradigmas:</strong> Programação Orientada a Objetos • Programação Lógica • IA
+            </p>
+        </section>
+
+        <section id="projetos">
+            <h2>Navegação por Projetos</h2>
+            <div id="projects-container" class="projects-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>▓▓▓ SINCRONIZANDO DADOS ▓▓▓</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificados">
+            <h2>Certificações & Conquistas Estelares</h2>
+            <div class="certificate-grid">
+                <a href="https://cursos.alura.com.br/degree/certificate/d4bd5867-cabf-487f-909d-881663dc05b7?lang" target="_blank" style="text-decoration: none;">
+                    <div class="certificate-card">
+                        <div class="certificate-title">🎯 Trilha Java OOP</div>
+                        <div class="certificate-issuer">Alura • Programação Orientada a Objetos</div>
+                    </div>
+                </a>
+                <a href="https://cursos.alura.com.br/degree/certificate/613b85ec-f2bb-4f4f-a8e6-375263c00ed6?lang" target="_blank" style="text-decoration: none;">
+                    <div class="certificate-card">
+                        <div class="certificate-title">🎯 Trilha Python OOP</div>
+                        <div class="certificate-issuer">Alura • Programação Orientada a Objetos</div>
+                    </div>
+                </a>
+                <a href="https://cursos.alura.com.br/certificate/6fb7d009-b15d-4db5-b6a1-5b9decc6d0fe?lang" target="_blank" style="text-decoration: none;">
+                    <div class="certificate-card">
+                        <div class="certificate-title">🎯 Python para Dados</div>
+                        <div class="certificate-issuer">Alura • Análise e Manipulação de Dados</div>
+                    </div>
+                </a>
+                <a href="https://cursos.alura.com.br/certificate/b2c84411-c353-49f2-b1f7-4b993ac1600e?lang" target="_blank" style="text-decoration: none;">
+                    <div class="certificate-card">
+                        <div class="certificate-title">🎯 Pensamento Computacional</div>
+                        <div class="certificate-issuer">Alura • Fundamentos da Computação e Lógica</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="contato" class="curriculum-section">
+            <h2>Curriculo</h2>
+            <div style="margin-top: 30px;">
+                <a href="curriculo.pdf" download class="curriculum-link">📄 Baixar meu Currículo</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    const GITHUB_USERNAME = 'EnukNogueira';
+    const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=stars&order=desc&per_page=100`;
+    
+    // Tags customizadas por projeto
+    const PROJECT_TAGS = {
+        'math_test': ['Python', 'Gerador Aleatório', 'Lógica'],
+        'projeto_skoob_pucpr': ['Python', 'JSON', 'Dados', 'Web Scraping'],
+        'projeto_cotacao': ['Python', 'APIs', 'Análise de Dados', 'JSON', 'Automação', 'Financeiro'],
+        'estoque-java': ['Java', 'POO', 'Banco de Dados', 'Negócio'],
+    };
+
+    async function loadProjects() {
+        const container = document.getElementById('projects-container');
+        
+        try {
+            const response = await fetch(API_URL);
+            
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+            
+            const repos = await response.json();
+            
+            if (!repos || repos.length === 0) {
+                container.innerHTML = '<p>Nenhum repositório público encontrado.</p>';
+                return;
+            }
+
+            const filteredRepos = repos.filter(repo => !repo.fork && repo.description);
+            const displayRepos = filteredRepos.length > 0 ? filteredRepos : repos.slice(0, 10);
+            
+            container.innerHTML = displayRepos
+                .map(repo => createProjectCard(repo))
+                .join('');
+                
+        } catch (error) {
+            console.error('Erro ao carregar projetos:', error);
+            container.innerHTML = `
+                <div class="error">
+                    <strong>⚠️ FALHA NA TRANSMISSÃO ⚠️</strong><br>
+                    Não foi possível sincronizar com o servidor remoto. Tente novamente.
+                </div>
+            `;
+        }
+    }
+
+    function createProjectCard(repo) {
+        const language = repo.language || 'N/A';
+        const stars = repo.stargazers_count > 0 ? `${repo.stargazers_count}✦` : '';
+        const description = repo.description || 'Sem descrição disponível';
+        
+        // Usar tags customizadas se existirem, senão usar topics
+        let tags = PROJECT_TAGS[repo.name] || repo.topics || [];
+        
+        // Se ainda não houver tags, usar padrão baseado na linguagem
+        if (tags.length === 0) {
+            if (language.toLowerCase() === 'python') {
+                tags = ['Python', 'Automação'];
+            } else if (language.toLowerCase() === 'java') {
+                tags = ['Java', 'POO'];
+            } else {
+                tags = ['Desenvolvimento'];
+            }
+        }
+        
+        const tagsHTML = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+        
+        return `
+            <div class="project-card">
+                <div class="project-title">${repo.name}</div>
+                <p class="project-description">${description}</p>
+                <div class="project-meta">
+                    <span>▸ ${language}</span>
+                    ${stars ? `<span>${stars}</span>` : ''}
+                </div>
+                <div class="tags">
+                    ${tagsHTML}
+                </div>
+                <a href="${repo.html_url}" class="project-link" target="_blank">▶ Acessar</a>
+            </div>
+        `;
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProjects);
+</script>
+
+</body>
+</html>
