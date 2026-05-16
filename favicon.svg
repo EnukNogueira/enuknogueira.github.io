@@ -1,0 +1,6 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Solid dark hexagon background to stand out on any browser tab color -->
+  <path d="M50 5 L89 27.5 V72.5 L50 95 L11 72.5 V27.5 Z" fill="#02040a" stroke="#ef4444" stroke-width="8" />
+  <!-- Stylized 'E' -->
+  <path d="M62 30 H35 V70 H62 M35 50 H52" stroke="#f87171" stroke-width="12" fill="none" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>
