@@ -64,7 +64,7 @@
                     <p class="project-desc">${description}</p>
                     <div class="project-tags">
                         ${tagsHTML}
-                        <span class="project-tag" style="border-color: rgba(245, 158, 11, 0.4); color: var(--astrophage-glow)">${language}</span>
+                        <span class="project-tag" style="border-color: rgba(239, 68, 68, 0.4); color: var(--astrophage-glow)">${language}</span>
                     </div>
                     <a href="${repo.html_url}" class="project-link" target="_blank">
                         Ver Projeto
@@ -101,7 +101,7 @@
                     this.opacity = Math.random() * 0.5 + 0.1;
                     
                     // Astrophage colors: Amber, Orange, and occasional pure white
-                    const colors = ['#f59e0b', '#fbbf24', '#ea580c', '#ffffff'];
+                    const colors = ['#ef4444', '#f87171', '#b91c1c', '#ffffff'];
                     // Weight probabilities to mostly amber/gold
                     const weights = [5, 4, 2, 1]; 
                     
