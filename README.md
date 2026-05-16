@@ -32,17 +32,14 @@ Atualmente, estou em transição de carreira, migrando da área elétrica indust
 
 Estudo diariamente e desenvolvo projetos práticos utilizando ferramentas como Python, Java e SQL. Meu ponto forte sempre foi a aplicação do pensamento lógico para a resolução de problemas complexos, uma habilidade que tenho traduzido da indústria diretamente para a programação.
 
-> *"Thinking is thinking. Problem, solution." — Rocky, Project Hail Mary*
-
 ## Executando o Projeto Localmente
 
 O projeto não possui dependências externas ou necessidade de instalação via gerenciadores de pacotes.
 1. Faça o clone deste repositório em sua máquina local.
 2. Abra o arquivo `index.html` diretamente no seu navegador.
-*(Nota: Devido às políticas de segurança dos navegadores modernos, a interface de áudio sintético só é ativada após a sua primeira interação com a página).*
 
 ## Contato
 
-Sinta-se à vontade para se conectar comigo para falar sobre dados, automação ou tecnologia:
+Sinta-se à vontade para me adicionar nas minhas redes sociais.
 - [LinkedIn](https://www.linkedin.com/in/enuknogueira/)
 - [GitHub](https://github.com/EnukNogueira)
