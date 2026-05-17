@@ -23,7 +23,7 @@ Para testar as capacidades da IA na geração de lógicas matemáticas e recurso
 ## Tecnologias Utilizadas
 
 - **HTML5 & CSS3**: Interface construída do zero, com foco em design responsivo e efeitos modernos como o *glassmorphism*.
-- **JavaScript (ES6+)**: Lida com a manipulação do DOM, integração com a API do GitHub (para listagem de projetos), renderização no Canvas e síntese de áudio.
+- **JavaScript (ES6+)**: Lida com a manipulação do DOM, consumo e tratamento de dados semiestruturados provenientes da API REST do GitHub.
 - **Engenharia de Prompt**: Orientação técnica, validação e gerenciamento do agente de IA durante todo o fluxo de desenvolvimento.
 
 ## Sobre Mim
