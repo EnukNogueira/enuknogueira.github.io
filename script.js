@@ -18,10 +18,14 @@ const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=star
 // Tags customizadas para projetos específicos
 // Explicação: Mapeia nomes de repositórios a tags de exibição customizadas.
 const PROJECT_TAGS = {
-    'math_test': ['Python', 'Gerador Aleatório', 'Lógica'],
-    'projeto_skoob_pucpr': ['Python', 'JSON', 'Dados', 'Web Scraping'],
-    'projeto_cotacao': ['Python', 'APIs', 'Análise de Dados', 'JSON', 'Automação', 'Financeiro'],
-    'estoque-java': ['Java', 'POO', 'Banco de Dados', 'Negócio'],
+    'math_test': ['Gerador Aleatório', 'Lógica'],
+    'projeto_skoob_pucpr': ['JSON', 'Dados', 'Web Scraping'],
+    'projeto_cotacao': ['APIs', 'Análise de Dados', 'JSON', 'Automação', 'Financeiro'],
+    'estoque-java': ['POO', 'Banco de Dados', 'Negócio'],
+    'currency-data-pipeline': ['APIs', 'Análise de Dados', 'Automação'],
+    'skkob-data-integrator': ['Integração de Dados', 'ETL', 'Automação'],
+    'inventory-management-system': ['Sistema de Gerenciamento', 'POO', 'Banco de Dados'],
+    'enuknogueira.github.io': ['Engenharia de Prompt', 'IA Agentica', 'Web Design', 'Frontend', 'Portfólio'],
 };
 
 // Função assíncrona para carregar projetos do GitHub
@@ -72,6 +76,8 @@ function createProjectCard(repo) {
         else if (language.toLowerCase() === 'java') tags = ['Java', 'POO'];
         else tags = ['Development'];
     }
+    // Remove linguagem das tags para evitar duplicação, já que será adicionada separadamente
+    tags = tags.filter(tag => tag.toLowerCase() !== language.toLowerCase());
     const tagsHTML = tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
     return `
         <div class="project-card">
