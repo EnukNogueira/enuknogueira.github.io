@@ -100,7 +100,7 @@ Atualmente, meus estudos estão concentrados em:
 
 **Enuk Nogueira**
 
-Estudante de Análise e Desenvolvimento de Sistemas pela PUCPR, com foco em Análise de Dados e Ciência de Dados.
+Estudante de Big Data e Inteligência Analítica pela PUCPR, com foco em Análise de Dados e Ciência de Dados.
 
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/enuknogueira/)
 
